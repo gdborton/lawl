@@ -1,0 +1,16 @@
+{
+  "name": "lawl",
+  "version": "0.0.0",
+  "description": "A Leage of Legends api client.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gary Borton",
+  "license": "ISC",
+  "dependencies": {
+    "limiter": "^1.0.5",
+    "lodash": "^2.4.1",
+    "request": "^2.48.0"
+  }
+}
