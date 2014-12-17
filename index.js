@@ -24,6 +24,9 @@ var Lawl = function (options) {
     this.getSummonerNameBySummonerIds = services.summoner.getSummonerNameBySummonerIds.bind(this);
     this.getSummonerRunesBySummonerIds = services.summoner.getSummonerRunesBySummonerIds.bind(this);
 
+    this.getStaticChampions = services.staticData.getChampions.bind(this);
+    this.getVersions = services.staticData.getVersions.bind(this);
+
     this.url = function (route) {
         var url = host + route + '?api_key=<%- apiToken %>';
         return _.template(url, {region: this.region.toLowerCase(), apiToken: this.apiToken});
