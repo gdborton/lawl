@@ -26,6 +26,7 @@ var Lawl = function (options) {
 
     this.getStaticChampions = services.staticData.getChampions.bind(this);
     this.getVersions = services.staticData.getVersions.bind(this);
+    this.getStaticItemData = services.staticData.getItems.bind(this);
 
     this.url = function (route) {
         var url = host + route + '?api_key=<%- apiToken %>';
