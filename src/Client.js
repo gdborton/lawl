@@ -1,12 +1,7 @@
 import champion from './services/Champion';
 import services from './services';
-
-const defaultOptions = {
-  rateLimit: 10,
-  region: 'na',
-  platformId: 'NA1',
-  apiKey: '',
-};
+import { RateLimiter } from 'limiter';
+import request from 'request';
 
 function initializeServices() {
   Object.keys(services).forEach(serviceName => {
@@ -17,17 +12,18 @@ function initializeServices() {
   });
 }
 
+// This is the default rate limit before any given app is approved.
+// 500 requests / 10 minutes / 60 seconds
+const defaultRateLimit = 500 / 10 / 60;
+
 class Client {
-  constructor({ rateLimit = 10, region = 'na', apiKey = '', platformId = 'NA1' } = defaultOptions) {
+  constructor({ rateLimit = 10, region = 'na', apiKey = '', platformId = 'NA1' } = {}) {
+    this.rateLimiter = new RateLimiter(rateLimit, 'second');
     this.rateLimit = rateLimit;
     this.region = region;
     this.apiKey = apiKey;
     this.platformId = 'NA1'
     initializeServices.call(this);
-  }
-
-  request(url, callback) {
-
   }
 
   url(path) {
@@ -37,7 +33,9 @@ class Client {
   }
 
   executeRequest(url, callback) {
-
+    this.rateLimiter.removeTokens(1, function() {
+      request.get(url, callback);
+    });
   }
 }
 
