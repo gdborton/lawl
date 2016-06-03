@@ -1,24 +1,18 @@
 import test from 'ava';
-import Champion from '../../lib/services/Champion';
-import Service from '../../lib/Service';
-import Client from '../../lib/Client';
-import sinon from 'sinon';
-
-const apiKey = process.env.LEAGUE_API_KEY;
-let client;
-let stubbedRequest;
-test.beforeEach(() => {
-  stubbedRequest = sinon.stub(Service.prototype, 'request');
-  client = new Client({
-    region: 'na',
-  });
-});
-
-test.afterEach(() => {
-  stubbedRequest.restore();
-});
+import {
+  apiKey,
+  noop,
+  client,
+  stubbedRequest,
+  shouldCallUrlMatching,
+} from './_serviceHelper';
 
 test('getChampions', (t) => {
-  client.champion.getChampions({}, (err, response) => {});
-  t.truthy(stubbedRequest.calledWith(`https://na.api.pvp.net/api/lol/na/v1.2/champion?api_key=${apiKey}`));
+  client.champion.getChampions(noop);
+  shouldCallUrlMatching('/api/lol/na/v1.2/champion', t);
+});
+
+test('getChampionById', (t) => {
+  client.champion.getChampionById({ championId: 1 }, noop);
+  shouldCallUrlMatching('/api/lol/na/v1.2/champion/1', t);
 });

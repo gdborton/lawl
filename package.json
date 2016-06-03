@@ -19,6 +19,14 @@
   },
   "devDependencies": {
     "ava": "^0.15.1",
+    "babel": "^6.5.2",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-0": "^6.5.0",
     "sinon": "^1.17.4"
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ]
   }
 }
