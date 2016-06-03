@@ -9,5 +9,5 @@ export default {
   getChampionById(opts, callback) {
     const url = this.url(`/api/lol/${this.region}/v1.2/champion/${opts.championId}`);
     this.executeRequest(url, callback);
-  }
+  },
 };

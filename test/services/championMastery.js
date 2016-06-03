@@ -1,16 +1,14 @@
 import test from 'ava';
 import {
-  apiKey,
   noop,
   client,
-  stubbedRequest,
   shouldCallUrlMatching,
 } from './_serviceHelper';
 
 test('getChampionMasteryByPlayerId', (t) => {
   client.championMastery.getChampionMasteryByPlayerId({
     playerId: 1,
-    championId: 10
+    championId: 10,
   }, noop);
   shouldCallUrlMatching('/championmastery/location/NA1/player/1/champion/10', t);
 });
@@ -21,7 +19,7 @@ test('getChampionMasteriesByPlayerId', (t) => {
 });
 
 test('getPlayerMasteryScore', (t) => {
-  client.championMastery.getPlayerMasteryScore({ playerId: 1}, noop);
+  client.championMastery.getPlayerMasteryScore({ playerId: 1 }, noop);
   shouldCallUrlMatching('/championmastery/location/NA1/player/1/score', t);
 });
 

@@ -31,4 +31,4 @@ export default {
     const url = this.url(`${prefix}/master?type=${type}`);
     this.executeRequest(url, callback);
   },
-}
+};

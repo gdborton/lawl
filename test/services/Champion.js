@@ -1,9 +1,7 @@
 import test from 'ava';
 import {
-  apiKey,
   noop,
   client,
-  stubbedRequest,
   shouldCallUrlMatching,
 } from './_serviceHelper';
 

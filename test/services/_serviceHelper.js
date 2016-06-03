@@ -4,8 +4,10 @@ import sinon from 'sinon';
 
 export const apiKey = 'fakeapikey';
 export const noop = () => {};
-export let stubbedRequest;
-export let client;
+// Usually a bad idea to export mutable, but this is for convenience in testing :/
+export let stubbedRequest; // eslint-disable-line import/no-mutable-exports
+export let client; // eslint-disable-line import/no-mutable-exports
+
 export function shouldCallUrlMatching(path, t) {
   t.truthy(stubbedRequest.called);
   const calledUrl = stubbedRequest.firstCall.args[0];

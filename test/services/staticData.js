@@ -1,9 +1,7 @@
 import test from 'ava';
 import {
-  apiKey,
   noop,
   client,
-  stubbedRequest,
   shouldCallUrlMatching,
 } from './_serviceHelper';
 
@@ -19,65 +17,65 @@ test('getChampionById', t => {
 
 test('getItemList', t => {
   client.staticData.getItemList(noop);
-  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/item', t); // Retrieves item list. (REST)
+  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/item', t);
 });
 
 test('getItemById', t => {
   client.staticData.getItemById({ itemId: 1 }, noop);
-  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/item/1', t); // Retrieves item by its unique id. (REST)
+  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/item/1', t);
 });
 
 test('getLanguageStrings', t => {
   client.staticData.getLanguageStrings({}, noop);
-  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/language-strings', t);// Retrieve language strings data. (REST)
+  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/language-strings', t);
 });
 
 test('getSupportedLanguages', t => {
   client.staticData.getSupportedLanguages(noop);
-  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/languages', t); // Retrieve supported languages data. (REST)
+  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/languages', t);
 });
 
 test('getMapData', t => {
   client.staticData.getMapData(noop);
-  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/map', t); // Retrieve map data. (REST)
+  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/map', t);
 });
 
 test('getMasteryList', t => {
   client.staticData.getMasteryList(noop);
-  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/mastery', t); // Retrieves mastery list. (REST)
+  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/mastery', t);
 });
 
 test('getMasteryById', t => {
   client.staticData.getMasteryById({ masteryId: 1 }, noop);
-  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/mastery/1', t); // Retrieves mastery item by its unique id. (REST)
+  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/mastery/1', t);
 });
 
 test('getRealmData', t => {
   client.staticData.getRealmData(noop);
-  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/realm', t); // Retrieve realm data. (REST)
+  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/realm', t);
 });
 
 test('getRuneList', t => {
   client.staticData.getRuneList(noop);
-  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/rune', t); // Retrieves rune list. (REST)
+  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/rune', t);
 });
 
 test('getRuneById', t => {
   client.staticData.getRuneById({ runeId: 1 }, noop);
-  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/rune/1', t); // Retrieves rune by its unique id. (REST)
+  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/rune/1', t);
 });
 
 test('getSummonerSpellList', t => {
   client.staticData.getSummonerSpellList(noop);
-  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/summoner-spell', t);// Retrieves summoner spell list. (REST)
+  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/summoner-spell', t);
 });
 
 test('getSummonerSpellById', t => {
   client.staticData.getSummonerSpellById({ summonerSpellId: 1 }, noop);
-  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/summoner-spell/1', t); // Retrieves summoner spell by its unique id. (REST)
+  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/summoner-spell/1', t);
 });
 
 test('getVersionData', t => {
   client.staticData.getVersionData(noop);
-  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/versions', t); // retrieve version data
+  shouldCallUrlMatching('/api/lol/static-data/na/v1.2/versions', t);
 });

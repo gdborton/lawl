@@ -1,4 +1,3 @@
-import champion from './services/Champion';
 import services from './services';
 import { RateLimiter } from 'limiter';
 import request from 'request';
@@ -17,12 +16,12 @@ function initializeServices() {
 const defaultRateLimit = 500 / 10 / 60;
 
 class Client {
-  constructor({ rateLimit = 10, region = 'na', apiKey = '', platformId = 'NA1' } = {}) {
+  constructor({ rateLimit = defaultRateLimit, region = 'na', platformId = 'NA1', apiKey } = {}) {
     this.rateLimiter = new RateLimiter(rateLimit, 'second');
     this.rateLimit = rateLimit;
     this.region = region;
     this.apiKey = apiKey;
-    this.platformId = 'NA1'
+    this.platformId = platformId;
     initializeServices.call(this);
   }
 
@@ -33,7 +32,7 @@ class Client {
   }
 
   executeRequest(url, callback) {
-    this.rateLimiter.removeTokens(1, function() {
+    this.rateLimiter.removeTokens(1, () => {
       request.get(url, callback);
     });
   }

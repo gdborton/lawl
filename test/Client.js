@@ -23,9 +23,9 @@ test('Client is instantiatable, and remembers options', (t) => {
   t.is(client.rateLimit, commonOptions.rateLimit, message);
 });
 
-test('Client rateLimit defaults to 10.', (t) => {
+test('Client rateLimit defaults to ~8.33.', (t) => {
   const client = new Client();
-  t.is(client.rateLimit, 10);
+  t.is(client.rateLimit, 500 / 10 / 60);
 });
 
 test('Client defaults to na', (t) => {
